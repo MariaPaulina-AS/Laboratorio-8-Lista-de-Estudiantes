@@ -9,6 +9,9 @@ fun String.esNombreValido(): Boolean = this.isNotBlank() && this.length > 2
 //Extension Function2
 fun Double.esAprobado(): Boolean = this >= 7.0
 
+//Extension Function3
+fun Double.esSobresaliente(): Boolean = this >= 9.0
+
 //Extension Property
 val Estudiante.estado: String
     get() = if (nota.esAprobado()) "Aprobado" else "Reprobado"
@@ -44,6 +47,13 @@ fun ejecutarLaboratorio() {
     val aprobados = filtrarEstudiantes(lista) { it.nota.esAprobado() }
 
     aprobados.forEach {
+        Log.d("com.example.funcionallab", "${it.nombre} (${it.nota})")
+    }
+
+    Log.d("com.example.funcionallab", "=== Estudiantes Sobresalientes ===")
+    val sobresalientes = filtrarEstudiantes(lista){ it.nota.esSobresaliente()}
+
+    sobresalientes.forEach{
         Log.d("com.example.funcionallab", "${it.nombre} (${it.nota})")
     }
 }
